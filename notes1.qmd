@@ -1,0 +1,145 @@
+---
+title: "notes 1 basic data types"
+format: html
+editor: source
+---
+
+### Assignment operator
+
+-   use \<- to assign things to variables
+-   variable names must start with a letter
+-   thisStyle is called camelCase
+-   important to keep understandable to you
+-   everything's case sensitive
+-   assignments are birectional
+-   rodney \<- 23
+-   23 -\> rodney
+-   both cool.
+
+### basic data types
+
+-   missing data: absence of anything (nothing)
+    -   N/A
+-   numerical data: components as measurable quantity (countable)
+-   counts, measurements
+-   decimals, integers
+-   real or imaginary
+-   character data: textual values (words)
+-   logical data: true or false
+-   dates: dates/time
+
+### order of operations
+
+-   :: ::: access variables in a namespace
+-   \$ \@ component/slot extraction
+-   \[ \[\[ indexing
+-   \^ exponents (right to left)
+-   +\_ minus and plus
+-   : sequence operator
+-   %any% special operatvor (ie pipes)
+-   \*/ multiply/divide
+-   +\_ (binary) add/subtract
+-   \< \> \<= \>= == != ordering, comparison
+-   ! negation
+-   & && and
+-   \~ as in formula
+-   -\> -\>\> rightwards assignment
+-   \<- \<\<- leftwards assignment
+-   = assignment
+-   ? help
+
+### data classes
+
+-   use introspection to check:
+-   is.numeric(variable)
+-   (replace "numeric" with whatever sort of data you're checking for)
+-   use class(variable) to identify class as well
+
+### coercion
+
+-   transform data into a new class
+-   as.datatype(variable)
+-   ie as.numeric(x)
+-   if you can't coerce it into a new class, it'll return NA
+
+### character data
+
+-   a sequnce of glyphs
+-   put quotes around it
+-   firstName \<- "Rodney"
+-   is.character(firstname) TRUE
+-   is.character(23) FALSE
+-   is.character("23") TRUE
+-   character coercion
+    -   almost any data type can be turned into a character
+
+### combination operators
+
+firstName \<- "Rodney" lastName \<- "Dyer"
+
+cannot do firstName+lastName
+
+instead:
+
+fullName \<-paste(firstName,lastName)
+
+fullname "Rodney Dyer"
+
+\^that's a character
+
+### logical data
+
+-   true or false
+-   !variable : reverses
+-   !(!variable) : double negative
+
+### binary operators
+
+-   \| OR
+-   TRUE \| FALSE TRUE OR FALSE
+-   & AND
+-   TRUE & FALSE TRUE AND FALSE
+-   for coercion: 0=false, any other=true
+
+### dates
+
+-   need to be explicit about what you mean
+-   epoch: time 0, midnight jan 1 1970 and the computer counts up in seconds since then
+-   sys.time() to see system time
+-   unclass(sys.time()) to see unix epoch time
+-   lubridate for time stuff.
+-   install.packages("lubridate")
+-   library(lubridate)
+-   sep1 \<- "9/1/22"
+-   class(sep1)
+-   character. this is just a character
+-   lubridate function mdy() month-day-year
+-   today \<- mdy(sep1)
+-   class(today)
+-   date!
+-   today
+-   2022-09-01
+-   today <-today() fucntion to say today :)
+
+### date operators
+
+-   today-1
+-   date one day before today
+-   weekdays(today)
+-   returns day of the week
+-   yday(today)
+-   returns what day of the year it is (1-366)
+-   interval conversions- how long between two days?
+-   hired <-mdy("08/25/2004")
+-   days <-today-hired
+-   days
+-   returns time difference in days
+-   mdy_hms() month day year hours minutes seconds
+-   mdy_hms("09/01/2022 12:30 PM")
+-   pay attention to timezone. thats all fucked
+-   setting a timezone
+-   mdy_hms("09/01/2022 12:30 PM", tz="US/Eastern")
+-   need to have compatible dates, ie all or none need timezone
+-   mdy("10/14/1969")+days(2000)->day20k
+-   adding days to date
+-   remember lubridate cheatsheet
